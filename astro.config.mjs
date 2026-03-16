@@ -1,25 +1,36 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeBlack from 'starlight-theme-black'
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			plugins: [
+				starlightThemeBlack({
+					navLinks: [{
+						label: 'Mods',
+						link: '/mods/list',
+					}],
+					footerText:
+						'Docs by [VoxelRift](https://voxelrift.gg)'
+
+				})
+			],
+			title: 'VoxelRift Docs',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/voxelrift' }],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Mods',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'List', slug: 'mods/list' },
+						{ label: 'Essential Commands', slug: 'mods/essentials' },
 					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+				}
+			],
+			customCss: [
+				'./src/styles/custom.css',
 			],
 		}),
 	],
