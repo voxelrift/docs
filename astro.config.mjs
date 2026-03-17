@@ -5,6 +5,8 @@ import starlightThemeBlack from 'starlight-theme-black'
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://docs.voxelrift.gg',
+	base: '/',
 	integrations: [
 		starlight({
 			plugins: [
